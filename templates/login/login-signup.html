@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>login-signup</title>
+  <link rel="stylesheet" href="{% static 'css/login/login-signup.css'%}">
+</head>
+
+<body>
+  <section class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div id="container" class="w-75 h-75 border borderforradius row">
+      <div id="left"
+        class="small-section-back col-4 d-flex justify-content-center align-items-center flex-column borderforradius">
+        <h2 id="h2-left" class="h2 my-2 text-center">Welcome Back</h2>
+        <h2 id="h2-hidden-left" class="d-none h2 my-2 text-center">Hello Friend!</h2>
+
+        <p id="p-left" class="my-2 text-center"><small>Keep connected with us please<br>Login with your personal
+            info</small></p>
+        <p id="p-hidden-left" class="d-none my-2 text-center"><small>Enter your perosnal details<br>And start your
+            journey with us</small></p>
+
+        <a id="btn-left" onclick="lhstorhs()" class="my-4 button">SIGN IN</a>
+        <a id="btn-hidden-left" onclick="rhstolhs()" class="d-none my-4 button">SIGN UP</a>
+      </div>
+
+      <div id="right" class="col-8 d-flex justify-content-center align-items-center flex-column border-dark">
+        <h1 id="h1-right" class="h1 m-2 text-center">Create account</h1>
+        <h1 id="h1-hidden-right" class="d-none h1 m-2 text-center">SignIn account</h1>
+
+        <div id="same-1" class="auto-signup my-2 text-center">
+          <a href="{% url 'social:begin' 'google' %}" class="mx-1 p-2 border border-dark rounded-circle"><img
+              src="https://img.icons8.com/material/20/000000/google-logo--v1.png" /></a>
+          <a href="{% url 'social:begin' 'facebook' %}" class="mx-1 p-2 border border-dark rounded-circle"><img
+              src="https://img.icons8.com/material-outlined/20/000000/facebook.png" /></a>
+          <a href="#" class="mx-1 p-2 border border-dark rounded-circle"><img
+              src="https://img.icons8.com/ios-filled/20/000000/linkedin-2--v1.png" /></a>
+        </div>
+        <span id="same-2" class="my-4 text-center"><small>or use your email for Signup</small></span>
+        <div class="form-container w-75 my-2">
+          <form method="post" action="{% url 'Signup-in' %}" class="row row-cols-lg-auto g-3 align-items-center">
+            <div id="user-right" class="col-12">
+<!--              <label class="visually-hidden" for="SignupUsername">Username</label>-->
+              <div class="input-group">
+                <div class="input-group-text"><img src="https://img.icons8.com/ios-glyphs/20/000000/user.png" /></div>
+                <input type="text" name="signup-username" class="form-control" id="SignupUsername"
+                  placeholder="Username" required>
+              </div>
+            </div>
+
+            <div id="email-right" class="col-12">
+<!--              <label class="visually-hidden" for="SignupEmail">Email</label>-->
+              <div class="input-group">
+                <div class="input-group-text"><img src="https://img.icons8.com/ios-glyphs/20/000000/email.png" /></div>
+                <input type="email" name="signup-email" class="form-control" id="SignupEmail" placeholder="Email"
+                  required>
+              </div>
+            </div>
+            <div id="password-right" class="col-12">
+<!--              <label class="visually-hidden" for="SignupPassword">Password</label>-->
+              <div class="input-group">
+                <div class="input-group-text"><img src="https://img.icons8.com/ios-glyphs/20/000000/password--v1.png" />
+                </div>
+                <input type="password" name="signup-password" class="form-control" id="SignupPassword"
+                  placeholder="Password" required>
+              </div>
+            </div>
+
+            <div id="email-hidden-right" class="d-none col-12">
+<!--              <label class="visually-hidden" for="SigninEmail">Email</label>-->
+              <div class="input-group">
+                <div class="input-group-text"><img src="https://img.icons8.com/ios-glyphs/20/000000/email.png" /></div>
+                <input type="text" name="signin-username" class="form-control" id="SigninEmail" placeholder="Username">
+              </div>
+            </div>
+            <div id="password-hidden-right" class="d-none col-12">
+<!--              <label class="visually-hidden" for="SigninPassword">Password</label>-->
+              <div class="input-group">
+                <div class="input-group-text"><img src="https://img.icons8.com/ios-glyphs/20/000000/password--v1.png" />
+                </div>
+                <input type="password" name="signin-password" class="form-control" id="SigninPassword"
+                  placeholder="Password">
+              </div>
+            </div>
+            <a href="{% url 'forgot-pass' %}" id="anchor-tag" class="d-none col-12 d-flex justify-content-center align-items-center">Forgot
+              Password</a>
+
+            <button id="btn-right" type="submit" class="btn btn-dark mx-auto">Signup</button>
+            <button id="btn-hidden-right" type="submit" class="d-none btn btn-dark mx-auto">Signin</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+
+  <!-- Internal Css -->
+  <script src="{% static 'js/login/login-signup.js' %}"></script>
+</body>
+
+</html>

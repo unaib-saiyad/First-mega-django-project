@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.small-section-back {
+  color: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../../assets/background-images/login/bg-login-signup.jpg");
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.animationfromright{
+  position: relative;
+  animation: righttoleft 2s ease-in-out 0s 1 forwards;
+}
+
+@keyframes righttoleft {
+  0%{
+      right:0%;
+  }
+  100%{
+      right: 33.6%;
+  }
+  
+}
+
+.backanimationfromright{
+  position: relative;
+  animation: backrighttoleft 2s ease-in-out 0s 1 forwards;
+}
+
+@keyframes backrighttoleft {
+  0%{
+    right: 33.6%;  
+  }
+  100%{
+    right:0%;
+  }
+  
+}
+
+.animationfromleft{
+  position: relative;
+  animation: lefttoright 2s ease-in-out 0s 1 forwards;
+}
+
+@keyframes lefttoright {
+  0%{
+      left:0%;
+  }
+  100%{
+      left: 66.6%;
+  }
+  
+}
+
+.backanimationfromleft{
+  position: relative;
+  animation: backlefttoright 2s ease-in-out 0s 1 forwards;
+}
+
+@keyframes backlefttoright {
+  0%{
+    left: 66.6%;
+  }
+  100%{
+    left:0%;
+  }
+  
+}
+
+/* Top to bottom & Bottom to top */
+.animationfromtop{
+  position: relative;
+  animation: toptobottom 2s ease-in-out 0s 1 forwards;
+}
+
+@keyframes toptobottom {
+  0%{
+      top:0%;
+  }
+  100%{
+      top: 66.6%;
+  }
+  
+}
+
+.backanimationfromtop{
+  position: relative;
+  animation: backtoptobottom 2s ease-in-out 0s 1 forwards;
+}
+
+@keyframes backtoptobottom {
+  0%{
+      top:66.6%;
+  }
+  100%{
+      top: 0%;
+  }
+  
+}
+
+.animationfrombottom{
+  position: relative;
+  animation: bottomtotop 2s ease-in-out 0s 1 forwards;
+}
+
+@keyframes bottomtotop {
+  0%{
+    bottom: 0%;
+  }
+  100%{
+    bottom:25%;
+  }
+  
+}
+
+.backanimationfrombottom{
+  position: relative;
+  animation: backbottomtotop 2s ease-in-out 0s 1 forwards;
+}
+
+@keyframes backbottomtotop {
+  0%{
+    bottom: 25%;
+  }
+  100%{
+    bottom:0%;
+  }
+  
+}
+
+  .button {
+    text-decoration: none;
+    color: white;
+    border: 2px solid white;
+    border-radius: 25px;
+    width: 130px;
+    padding-left: 35px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    color: wheat;
+  }
+
+  .borderforradius{
+    border-radius: 20px;
+  }
+
+  #anchor-tag{
+    text-decoration: none;
+    color: black;
+  }
