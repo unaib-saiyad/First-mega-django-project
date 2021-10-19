@@ -5,7 +5,8 @@
 }
 
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../images/about/about-back.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+     url("../../assets/background-images/dashboard/about/about-back.jpg");
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
