@@ -24,6 +24,12 @@
     </style>
 {% endblock %}
 
+{% block headscripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+{% endblock %}
+
 {% block user-login %}
     <a class="navbar-brand nav-link" href="../login/">
         {% if user != 'anonymous-user' %}
@@ -37,48 +43,82 @@
 {% endblock %}
 
 {% block body %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong class="text-danger">Hey {{user.username}}!</strong> {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
     <div class="container my-4">
         <h2 class="h2">Contact Us</h2>
-        <form class="row g-3">
+        <form class="row g-3" action="{% url 'contact' %}" method="post">
             <div class="col-md-6">
                 <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
                 <div class="input-group">
                     <div class="input-group-text">@</div>
-                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+                    <input type="text" name="username" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
                 </div>
             </div>
             <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Name with Surname" id="Name">
+                <input type="text" name="fullname" class="form-control" placeholder="Name with Surname" id="Name">
             </div>
             <div class="col-md-6">
                 <label for="inputEmail4" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail4">
+                <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email">
             </div>
 
             <div class="col-md-6">
-                <label for="inputPassword4" class="form-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword4">
+                <label for="mobile-number" class="form-label">Contact Number</label>
+                <input type="number" name="mobile" class="form-control" id="mobile-number" placeholder="Mobile-number">
             </div>
             <div class="col-md-6">
                 <label for="inputCity" class="form-label">City</label>
-                <input type="text" class="form-control" id="inputCity">
+                <input type="text" name="city" class="form-control" id="inputCity">
             </div>
             <div class="col-md-4">
                 <label for="inputState" class="form-label">State</label>
-                <select id="inputState" class="form-select">
-                    <option selected class="text-dark">Maharashtra</option>
-                    <option class="text-dark">Madhaypardesh</option>
-                    <option class="text-dark">Goa</option>
+                <select id="inputState" name="state" class="form-select">
+                    <option value="Andhra Pradesh" class="text-dark">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh" class="text-dark">Arunachal Pradesh</option>
+                    <option value="Assam" class="text-dark">Assam</option>
+                    <option value="Bihar" class="text-dark">Bihar</option>
+                    <option value="Chhattisgarh" class="text-dark">Chhattisgarh</option>
+                    <option value="Goa" class="text-dark">Goa</option>
+                    <option value="Gujarat" class="text-dark">Gujarat</option>
+                    <option value="Haryana" class="text-dark">Haryana</option>
+                    <option value="Himachal Pradesh" class="text-dark">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir" class="text-dark">Jammu and Kashmir</option>
+                    <option value="Jharkhand" class="text-dark">Jharkhand</option>
+                    <option value="Karnataka" class="text-dark">Karnataka</option>
+                    <option value="Kerala" class="text-dark">Kerala</option>
+                    <option value="Madhya Pradesh" class="text-dark">Madhya Pradesh</option>
+                    <option selected value="Maharashtra" class="text-dark">Maharashtra</option>
+                    <option value="Manipur" class="text-dark">Manipur</option>
+                    <option value="Meghalaya" class="text-dark">Meghalaya</option>
+                    <option value="Mizoram" class="text-dark">Mizoram</option>
+                    <option value="Nagaland" class="text-dark">Nagaland</option>
+                    <option value="Odisha" class="text-dark">Odisha</option>
+                    <option value="Punjab" class="text-dark">Punjab</option>
+                    <option value="Rajasthan" class="text-dark">Rajasthan</option>
+                    <option value="Sikkim" class="text-dark">Sikkim</option>
+                    <option value="Tamil Nadu" class="text-dark">Tamil Nadu</option>
+                    <option value="Telangana" class="text-dark">Telangana</option>
+                    <option value="Tripura" class="text-dark">Tripura</option>
+                    <option value="Uttar Pradesh" class="text-dark">Uttar Pradesh</option>
+                    <option value="Uttarakhand" class="text-dark">Uttarakhand</option>
+                    <option value="West Bengal" class="text-dark">West Bengal</option>
                 </select>
             </div>
             <div class="col-md-2">
                 <label for="inputZip" class="form-label">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
+                <input type="text" name="zip" class="form-control" id="inputZip">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Any Query</label>
-                <textarea class="form-control" style="height: 175px;" id="exampleFormControlTextarea1"
-                    rows="3"></textarea>
+                <textarea class="form-control" name="query" style="height: 175px;" id="exampleFormControlTextarea1"
+                    rows="3" placeholder="Write your queries here..."></textarea>
             </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Submit</button>
