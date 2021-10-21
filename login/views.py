@@ -209,6 +209,7 @@ class Profile(View):
         """
         if request.user.is_authenticated:
             user = request.user
+            messages = []
             try:
                 login = Login.objects.filter(user=user).get()
             except:
@@ -221,7 +222,9 @@ class Profile(View):
                 progress = UserWork.objects.filter(user=user).get()
             except:
                 progress = ""
-            params = {'user': user, 'login': login, 'urls': urls, 'progress': progress}
+            if (login.full_name and login.mobile and login.Address and user.email) == "":
+                messages.append('Please enter fullname, email, mobile-number and address properly')
+            params = {'user': user, 'login': login, 'urls': urls, 'progress': progress, "messages": messages}
             return render(request, 'login/user_profile.html', params)
         else:
             return redirect('../')

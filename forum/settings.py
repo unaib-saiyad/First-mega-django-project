@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'forum',
     'mails',
     'dashboard',
+    'forumapp',
 
     # Setup for Social apps
     'social_django',

@@ -1,0 +1,72 @@
+{% extends "forum/base.html" %}
+
+{% load static %}
+
+{% block title %}Add forum{% endblock %}
+
+{% block body %}
+
+<div class="wrapper d-flex justify-content-center align-items-center flex-column">
+    <h1 class="h1">Start a Forum</h1>
+    <!-- /.col -->
+    <div class="col-md-9">
+        <div class="card card-primary card-outline">
+            <form action="{% url 'add-forum' %}" method="post">
+                <div class="card-header">
+                    <h3 class="card-title">Compose New Forum</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="form-group">
+                        <input name="subject" class="form-control" placeholder="Subject:">
+                    </div>
+                    <div class="form-group">
+                        <input name="tags" class="form-control" placeholder="Tags:">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="textarea" rows="5" id="compose-textarea" class="form-control" style="height: 400px"
+                            placeholder="Write your problem here..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="btn btn-default btn-file">
+                            <i class="fas fa-paperclip"></i> Attachment
+                            <input type="file" name="attachment">
+                        </div>
+                        <p class="help-block">Max. 32MB</p>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <div class="float-right">
+                        <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i>
+                            Send</button>
+                    </div>
+                    <button type="reset" class="btn btn-default"><i class="fas fa-times"></i>
+                        Discard</button>
+                </div>
+                <!-- /.card-footer -->
+            </form>
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    $(function () {
+        //Add text editor
+        $('#compose-textarea').summernote()
+    });
+    $(document.body).addClass('hold-transition sidebar-mini');
+</script>
+{% endblock %}

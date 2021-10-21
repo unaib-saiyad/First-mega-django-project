@@ -22,6 +22,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include('dashboard.urls'), name='home'),
+                  path('forum/', include('forumapp.urls'), name='forum'),
                   path('login/', include("login.urls")),
                   path('mails/', include("mails.urls")),
                   path('oauth/', include('social_django.urls', namespace='social')),

@@ -17,9 +17,23 @@
 
     <title>User-Profile</title>
     <link rel="stylesheet" href="{% static 'css/login/user_profile.css'%}">
+
+    <!--    Scripts for alert-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong class="text-danger">Hey {{user.username}}!</strong> {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <div class="border container py-2 d-none" id="add-file-div">
         <h3 class="h3">Add File</h3>
         <h5>You can choose or drag&drop</h5>
