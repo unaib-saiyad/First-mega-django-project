@@ -99,18 +99,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr onclick="myFunction()" class="ptr-class" style="height: 5rem;">
-                    <th scope="row">1</th>
+            {% if forums == None %}
+                <h2 class="h2">No forum is started by any user till now!...</h2>
+            {% else %}
+            {% for item in forums %}
+                <tr onclick="myFunction('{{item.user.username}}')" class="ptr-class" style="height: 5rem;">
+                    <th scope="row">{{forloop.counter}}</th>
                     <td style="height: 100%;">
-                        <p id="table-para" style="vertical-align: top;">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                            Veritatis distinctio vel molestias accusantium quo ducimus similique hic labore
-                            provident non dicta ratione, fuga incidunt iure repellendus aliquid voluptates officia
-                            atque voluptas amet! Nesciunt, exercitationem!</p>
+                        <p style="vertical-align: top;">{{item.subject}}</p>
                         <br>
                         <p style="vertical-align: bottom; margin-bottom: 0;" class="text-muted">
                             Started by: <strong data-popover-content="#popover-html" data-toggle="popover"
-                                class="text-danger">@Mark</strong> in
-                            <strong>Java,JavaScript</strong>
+                                class="text-danger">@{{item.user.username}}</strong>
+                            {% if item.languages != "" %}
+                            in <strong>{{item.languages}}</strong>
+                            {% endif %}
                         </p>
                     </td>
                     <td>
@@ -118,87 +121,16 @@
                     </td>
                     <td style="height: 100%; vertical-align: middle;">
                         <p>
-                            Time: 14:12:56
-                            <br><br>
-                            Date: 26/05/2020
+                            <br>
+                            Time: {{item.modify_date.time}}
+                            <br>
+                            Date: {{item.modify_date.date}}
+                            <br>
                         </p>
                     </td>
                 </tr>
-
-                <tr onclick="myFunction()" class="ptr-class" style="height: 5rem;">
-                    <th scope="row">2</th>
-                    <td style="height: 100%;">
-                        <p style="vertical-align: top;">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                            Veritatis distinctio vel molestias accusantium quo ducimus similique hic labore provident
-                            non dicta ratione, fuga incidunt iure repellendus aliquid voluptates officia atque voluptas
-                            amet! Nesciunt, exercitationem!</p>
-                        <br>
-                        <p style="vertical-align: bottom; margin-bottom: 0;" class="text-muted">
-                            Started by: <strong data-popover-content="#popover-html" data-toggle="popover"
-                                class="text-danger">@Mark</strong> in
-                            <strong>JavaScript</strong>
-                        </p>
-                    </td>
-                    <td>
-                        55
-                    </td>
-                    <td style="height: 100%; vertical-align: middle;">
-                        <p>
-                            Time: 14:12:56
-                            <br><br>
-                            Date: 26/05/2020
-                        </p>
-                    </td>
-                </tr>
-
-                <tr onclick="myFunction()" class="ptr-class" style="height: 5rem;">
-                    <th scope="row">3</th>
-                    <td style="height: 100%;">
-                        <p style="vertical-align: top;">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                            Veritatis distinctio vel molestias accusantium quo ducimus similique hic labore provident
-                            non dicta ratione, fuga incidunt iure repellendus aliquid voluptates officia atque voluptas
-                            amet! Nesciunt, exercitationem!</p>
-                        <br>
-                        <p style="vertical-align: bottom; margin-bottom: 0;" class="text-muted">
-                            Started by: <strong data-popover-content="#popover-html" data-toggle="popover"
-                                class="text-danger">@Mark</strong> in
-                            <strong>Django,Python</strong>
-                        </p>
-                    </td>
-                    <td>
-                        55
-                    </td>
-                    <td style="height: 100%; vertical-align: middle;">
-                        <p>
-                            Time: 14:12:56
-                            <br><br>
-                            Date: 26/05/2020
-                        </p>
-                    </td>
-                </tr>
-
-                <tr onclick="myFunction()" class="ptr-class" style="height: 5rem;">
-                    <th scope="row">4</th>
-                    <td>Jacob</td>
-                    <td>305</td>
-                    <td>@fat</td>
-                </tr>
-
-                <tr onclick="myFunction()" class="ptr-class" style="height: 5rem;">
-                    <th scope="row">5</th>
-                    <td style="height: 100%;">
-                        <p style="vertical-align: top;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Incidunt quam corporis accusantium?</p>
-                        <br>
-                        <p style="vertical-align: bottom; margin-bottom: 0;" class="text-muted">Started by: <strong
-                                data-popover-content="#popover-html" data-toggle="popover"
-                                class="text-danger">@John</strong>
-                            in <strong>Python</strong>
-                        </p>
-                    </td>
-                    <td>24</td>
-                    <td>@twitter</td>
-                </tr>
+            {% endfor %}
+            {% endif %}
             </tbody>
         </table>
     </div>
@@ -257,15 +189,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script>
 
-        var para=document.getElementById('table-para').innerHTML.replace(/\s+/g, ' ').trim();
-        if(para.length>150){
-            para = para.slice(0,150);
-        }
-        document.getElementById('table-para').innerHTML=para+'...';
-
         // table tier click function
-        function myFunction() {
-            window.open('open_forum.html', '_self');
+        function myFunction(username) {
+            window.open("{% url 'open-forum' username=username %}", '_self');
         }
 
         // user hover function 
